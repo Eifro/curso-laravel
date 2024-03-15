@@ -11,10 +11,14 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     * Seeders, es un método que permite enviar una cantidad de datos a la base de datos.
+     * Factorys, llena con datos de prueba a la base de datos especificando el tipo y la cantidad de registros.
      */
 
     /*
         php artisan db:seed -> ejecuta los seeders
+        php artisan make:seeder nombre -> crea un nuevo seeder
+        php artisan migrate:fresh --seed -> ejecuta 2 comandos (migrate:fresh | db:seed) ya que estan relacionados
     */
     public function run(): void
     {
@@ -25,10 +29,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $curso = new Curso();
-        $curso->name = 'Laravel';
-        $curso->descripcion = 'Framework de PHP';
-        $curso->category = 'Desarrollo Web Backend';
-        $curso->save();
+        // Ejecuta todo lo encuentra en otra clase seeder
+        $this->call(CursoSeeder::class);
     }
 }
