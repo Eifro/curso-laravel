@@ -14,6 +14,11 @@ class UserFactory extends Factory
     /**
      * The current password being used by the factory.
      */
+
+    /*
+        php artisan make:factory nombreFactory -> crea un factory (archivo database/factories)
+        Los factory estan relacionados con los seeder, si se crea un factory se tiene que usar en un seeder
+    */
     protected static ?string $password;
 
     /**
