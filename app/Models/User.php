@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+// Se importa para mutadores y accesores
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
@@ -53,12 +54,29 @@ class User extends Authenticatable
     protected function name():Attribute
     {
         return new Attribute(
-            get: function($value) {
+           /* get: function($value) { // muestra en camelcase al imprimir
                 return ucwords($value);
             },
-            set: function($value) {
+            set: function($value) { // almacena en minuscula en la base de datos
                 return strtolower($value);
-            }
+            } */
+            
+            /* Función flecha en php8 */
+            get: fn($value) => ucwords($value),
+            set: fn($value) => strtolower($value)
         );
     }
+
+    // accesores y mutadores en versiones anteriores
+    /*
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+    */
 }
