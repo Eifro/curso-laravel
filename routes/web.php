@@ -46,5 +46,5 @@ Route::get('/', HomeController::class);
 Route::controller(CursoController::class)->group(function() {
     Route::get('cursos', 'index')->name('cursos.index'); // añadiendo un identificador a la ruta con el método name()
     Route::get('cursos/create', 'create')->name('cursos.create');
-    Route::get('cursos/{curso}', 'show')->name('cursos.show');
+    Route::get('cursos/{id}', 'show')->name('cursos.show');
 });

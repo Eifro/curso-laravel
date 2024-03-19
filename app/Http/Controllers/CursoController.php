@@ -25,8 +25,11 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function show($curso)
+    public function show($id)
     {
+        // buscar curso por id
+        $curso = Curso::find($id);
+
         // Para pasar una variable a la vista - ['curso' => $curso]
         return view('cursos.show', compact('curso'));
     }
